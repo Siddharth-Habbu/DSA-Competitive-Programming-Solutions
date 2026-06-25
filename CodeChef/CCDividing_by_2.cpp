@@ -33,31 +33,39 @@ ll lcmll(ll a, ll b){
 }
 
 
-int main() {
+int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    string s;
-    cin >> s;
+    int t;
+    cin >> t;
 
-    size_t p = s.find("AB");
-    if (p != string::npos) {
-        size_t q = s.find("BA", p + 2);
-        if (q != string::npos) {
-            cout << "YES\n";
-            return 0;
+    while(t--){
+        int n;
+        cin >> n;
+        vll v1(n);
+
+        for(int i = 0;i<n;i++){
+            cin >> v1[i];
         }
+        sort(v1.begin(),v1.end());
+
+        int i = 1,count = 0;
+        while(i<n){
+            if(v1[i] > v1[0]){
+                v1[i] /= 2;
+                count++;
+            }
+            else if(v1[i] == v1[0]){
+                i++;
+            }
+            else{
+                swap(v1[0],v1[i]);
+                i = 1;
+            }
+        }
+        cout << count << "\n";
     }
 
-    p = s.find("BA");
-    if (p != string::npos) {
-        size_t q = s.find("AB", p + 2);
-        if (q != string::npos) {
-            cout << "YES\n";
-            return 0;
-        }
-    }
-
-    cout << "NO\n";
     return 0;
 }

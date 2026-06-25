@@ -33,31 +33,20 @@ ll lcmll(ll a, ll b){
 }
 
 
-int main() {
+int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    string s;
-    cin >> s;
+    int t,d;
+    cin >> d >> t;
 
-    size_t p = s.find("AB");
-    if (p != string::npos) {
-        size_t q = s.find("BA", p + 2);
-        if (q != string::npos) {
-            cout << "YES\n";
-            return 0;
-        }
+    if(t>=d){
+        cout << 0;
+    }
+    else{
+        cout << abs(d-t);
     }
 
-    p = s.find("BA");
-    if (p != string::npos) {
-        size_t q = s.find("AB", p + 2);
-        if (q != string::npos) {
-            cout << "YES\n";
-            return 0;
-        }
-    }
 
-    cout << "NO\n";
     return 0;
 }
